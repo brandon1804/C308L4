@@ -101,22 +101,33 @@ class Eats extends React.Component {
   }
 }
 
-class WorldClock extends React.Component {
+
+class Clock extends React.Component {
   render() {
-    var aS = moment.tz(moment(), "Asia/Singapore").format("H:D Z");
-    var eL = moment.tz(moment(), "Europe/London").format("H:D Z");
-    var aN = moment.tz(moment(), "America/New_York").format("H:D Z");
-    var eO = moment.tz(moment(), "Europe/Oslo").format("H:D Z");
+
+    var time = moment.tz(this.props.timezone).format("H:D Z");
 
     return (
           <Text>
-          Asia/Singapore - {aS}{"\n"}
-          Europe/London - {eL}{"\n"}
-          America/New_York - {aN}{"\n"}
-          Europe/Oslo - {eO}</Text>
+            {this.props.timezone} - {time}{"\n"}
+          </Text>
     );
   }
 }
+
+const WorldClock = () => {
+
+  return (
+      <Text>
+        <Clock timezone = "Asia/Singapore"/>
+        <Clock timezone = "Europe/London"/>
+        <Clock timezone = "America/New_York"/>
+        <Clock timezone = "Europe/Oslo"/>
+      </Text>
+  );
+};//end of WorldClock
+
+
 
 const styles = StyleSheet.create({
   scrollView: {
